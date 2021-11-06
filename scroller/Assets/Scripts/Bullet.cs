@@ -8,7 +8,7 @@ public class Bullet : Entity
     public bool isShot;
     public int damage;
     // Start is called before the first frame update
-    protected void Start()
+    protected void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }

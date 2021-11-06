@@ -2,21 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EntityType
+{
+    Player,
+    Null
+}
+
 public class Entity : MonoBehaviour
 {
+    #region Components
+    public EntityType entityType;           
+    public SpriteRenderer spriteRenderer;   //SpriteRenderer for this entity
+    #endregion
     #region PixelPerfectAjustment
     Vector2 storedSubPixelVector;                        //stored vector used for subpixel movement
     #endregion
-    protected Vector2 moveDirection;
-    public float movementSpeed;
-    public SpriteRenderer spriteRenderer;
-    public int healthCurrent;
-    public int healthTotal;
+    #region Movement
+    protected Vector2 moveDirection;        //where the entity is going 
+    public float movementSpeed;             //how fast the entity moves
+    #endregion
+    #region Health
+    public int healthTotal;                 //max health of the entity
+    protected int healthCurrent;            //health that revices damage and if <= 0 the entity will die 
+    #endregion
+    public int damage;                      //damage entity puts out 
 
-    //public EntityType entityType;
-    protected RaycastHit2D[] Hits = new RaycastHit2D[2];      //this checks the area infornt of the player when they are moving
+    protected RaycastHit2D[] Hits = new RaycastHit2D[2];      //stored hits from CheckHit
 
-    protected virtual bool CheckHit() { return false; }
+    protected virtual bool CheckHit() { return false; }//this checks the area infornt of the entity when it is moving
     protected Vector2 PixelPerfectClamp(Vector2 mMoveVector, float mPixelsPerUnit)
     {
         //Vector2 x ppu as intergers then divided by ppu
@@ -55,19 +68,21 @@ public class Entity : MonoBehaviour
         return vectorInPixels / mPixelsPerUnit;     //returns the clamped Vector2
 
     }
+    //Called when a Entity needs to recive damage, virtual so Entity's with other onDamage effects
     public virtual void TakeDamage(int _sentDamage)
     {
-        healthCurrent -= _sentDamage;
+        healthCurrent -= _sentDamage;   //removes Damage sent from the script calling this method from the current health of the entity
 
+        //checks if the enitiy's health has fallen to or below 0
         if (healthCurrent <= 0)
         {
-            healthCurrent = 0;
-            Death();
+            healthCurrent = 0;          //avoids any issue that come from having an entity w/ negitive health vaules. i.e. UI changes
+            Death();                    //Calls the death method to kill the entity
         }
-
     }
+    //Called when a Entity needs to die, virtual so Entity's with other onDeath effects
     public virtual void Death()
     {
-        Destroy(gameObject);
+        Destroy(gameObject);// temp destroy before we make batter pooling solution
     }
 }

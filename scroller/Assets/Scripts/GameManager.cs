@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager staticGameManager;
     public Rect PlayerMovementBounds;
+
     // Start is called before the first frame update
     private void Awake()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : Entity
 {
     // Start is called before the first frame update
-    protected void Start()
+    protected void Awake()
     {
         moveDirection = new Vector2(-1,0);
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -23,8 +23,8 @@ public class Enemy : Entity
 
         _newDirection = (moveDirection * movementSpeed) * Time.deltaTime;
 
-        _currentPosition = PixelPerfectClamp(transform.position, 32);
-        _newDirection = SubPixelMovment(_newDirection, 32);
+        _currentPosition = PixelPerfectClamp(transform.position, 16);
+        _newDirection = SubPixelMovment(_newDirection, 16);
 
         Rect tempBounds = GameManager.staticGameManager.PlayerMovementBounds;
         Vector2 newPosition = _currentPosition + _newDirection;
