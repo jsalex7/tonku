@@ -1,0 +1,63 @@
+/*
+
+*.meta
+!*.*.meta
+
+!.gitignore
+
+!_
+
+# Some Unity package create assets under Assets/Editor folder and unsure if these can be moved
+!Editor
+!Editor Default Resources
+!Gizmos
+!Plugins
+# Not adding a sub folder gitignore file into Resources for clean purpose
+!Resources
+Resources/**
+!Standard Assets
+# Not adding a sub folder gitignore file into StreamingAssets for clean purpose
+!StreamingAssets
+StreamingAssets/**
+!StreamingAssets/version.txt
+!StreamingAssets/version.txt.meta
+
+# ProBuilder URP material is inside sample folder, so source control it
+!Samples
+Samples/**
+!Samples/ProBuilder
+
+#
+!AddressableAssetsData
+AddressableAssetsData/**
+!AddressableAssetsData/AssetGroupTemplates/
+AddressableAssetsData/AssetGroupTemplates/**
+!AddressableAssetsData/AssetGroupTemplates/Packed Assets.asset
+!AddressableAssetsData/AssetGroupTemplates/Packed Assets.asset.meta
+!AddressableAssetsData/DataBuilders/
+AddressableAssetsData/DataBuilders/**
+!AddressableAssetsData/DataBuilders/BuildScriptFastMode.asset
+!AddressableAssetsData/DataBuilders/BuildScriptFastMode.asset.meta
+!AddressableAssetsData/DataBuilders/BuildScriptPackedMode.asset
+!AddressableAssetsData/DataBuilders/BuildScriptPackedMode.asset.meta
+!AddressableAssetsData/DataBuilders/BuildScriptPackedPlayMode.asset
+!AddressableAssetsData/DataBuilders/BuildScriptPackedPlayMode.asset.meta
+!AddressableAssetsData/DataBuilders/BuildScriptVirtualMode.asset
+!AddressableAssetsData/DataBuilders/BuildScriptVirtualMode.asset.meta
+!AddressableAssetsData/AddressableAssetSettings.asset
+!AddressableAssetsData/AddressableAssetSettings.asset.meta
+!AddressableAssetsData/DefaultObject.asset
+!AddressableAssetsData/DefaultObject.asset.meta
+
+# 
+Unity.VisualScripting.Generated.meta
+
+!scripts
+
+!link.xml
+
+!UniversalRenderPipelineGlobalSettings.asset
+
+OtherAssets.zip.meta
+Plugins.zip.meta
+Standard Assets.zip.meta
