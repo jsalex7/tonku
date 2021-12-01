@@ -3,6 +3,8 @@
     using Cysharp.Threading.Tasks;
     using Microsoft.Extensions.Logging;
     using Unity.VisualScripting;
+    using UnityEngine.AddressableAssets;
+    using UnityEngine.SceneManagement;
 
     public partial class Bootstrap
     {
@@ -19,6 +21,9 @@
 
                 variablesComp.declarations.Set("rank1ManagerGO", _appSettings.managerGO);
             }
+
+            var asyncLoad = Addressables.LoadSceneAsync("Location - 001", LoadSceneMode.Additive);
+            var result = await asyncLoad.Task;
         }
     }
 }
