@@ -22,8 +22,8 @@
                 variablesComp.declarations.Set("rank1ManagerGO", _appSettings.managerGO);
             }
 
-            var asyncLoad = Addressables.LoadSceneAsync("Location - 001", LoadSceneMode.Additive);
-            var result = await asyncLoad.Task;
+            // var asyncLoad = Addressables.LoadSceneAsync("Location - 001", LoadSceneMode.Additive);
+            // var result = await asyncLoad.Task;
         }
     }
 }
